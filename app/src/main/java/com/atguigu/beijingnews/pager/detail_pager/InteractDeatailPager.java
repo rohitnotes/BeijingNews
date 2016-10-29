@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -32,12 +33,18 @@ import com.atguigu.beijingnews.utils.LogUtil;
 import com.atguigu.beijingnews.utils.NetCacheUtils;
 import com.atguigu.beijingnews.volley.VolleyManager;
 import com.google.gson.Gson;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import okhttp3.Call;
 
 /**
  * Created by xinpengfei on 2016/10/17.
@@ -123,6 +130,21 @@ public class InteractDeatailPager extends MenuDetailBasePager {
             processData(saveJson);
         }
 
+//        getDataFromNet();
+
+        getDataFromNetByOkHttpUtils();
+    }
+
+    private void getDataFromNetByOkHttpUtils() {
+        OkHttpUtils
+                .get()
+                .url(photosUrl)
+                .id(100)
+                .build()
+                .execute(new MYStringCallback());
+    }
+
+    private void getDataFromNet() {
         StringRequest stringQues = new StringRequest(Request.Method.GET, photosUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
@@ -172,6 +194,21 @@ public class InteractDeatailPager extends MenuDetailBasePager {
 
     class PhotosDetailPagerAdapter extends BaseAdapter {
 
+        private DisplayImageOptions options;
+
+        public PhotosDetailPagerAdapter() {
+            options = new DisplayImageOptions.Builder()
+                    .showImageOnLoading(R.drawable.pic_item_list_default)
+                    .showImageForEmptyUri(R.drawable.pic_item_list_default)
+                    .showImageOnFail(R.drawable.pic_item_list_default)
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true)
+                    .considerExifParams(true)
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                    .displayer(new RoundedBitmapDisplayer(20))//矩形圆角图片
+                    .build();
+        }
+
         @Override
         public int getCount() {
             return news.size();
@@ -204,12 +241,33 @@ public class InteractDeatailPager extends MenuDetailBasePager {
             //根据位置得到对应的数据
             PhotosDetailPagerBean.DataBean.NewsBean item = news.get(position);
             viewHolder.tv_title.setText(item.getTitle());
-            viewHolder.iv_icon.setTag(position);
-            //loaderImager(viewHolder,Constants.BASE_URL+item.getListimage());
-            Bitmap bitmap = bitmapCacheUtils.getBitmap(Constants.BASE_URL + item.getListimage(), position);
-            if (bitmap != null) {//来自内存或者本地
-                viewHolder.iv_icon.setImageBitmap(bitmap);
-            }
+            //1.使用自定义方式：三级缓存请求图片
+//            viewHolder.iv_icon.setTag(position);
+//            //loaderImager(viewHolder,Constants.BASE_URL+item.getListimage());
+//            Bitmap bitmap = bitmapCacheUtils.getBitmap(Constants.BASE_URL + item.getListimage(), position);
+//            if (bitmap != null) {//来自内存或者本地
+//                viewHolder.iv_icon.setImageBitmap(bitmap);
+//            }
+
+            //2.使用Picasso请求图片
+//            Picasso.with(context)
+//                    .load(Constants.BASE_URL + item.getListimage())
+//                    .placeholder(R.drawable.pic_item_list_default)
+//                    .error(R.drawable.pic_item_list_default)
+//                    .into(viewHolder.iv_icon);
+
+            //3.使用Glide请求图片
+//            Glide
+//                    .with(context)
+//                    .load(Constants.BASE_URL + item.getListimage())
+//                    .centerCrop()
+//                    .placeholder(R.drawable.pic_item_list_default)
+//                    .crossFade()
+//                    .into(viewHolder.iv_icon);
+
+            //4.使用ImageLoader加载网络图片
+            com.nostra13.universalimageloader.core.ImageLoader.getInstance().displayImage(Constants.BASE_URL + item.getListimage(), viewHolder.iv_icon, options);
+
 
             return convertView;
         }
@@ -270,6 +328,45 @@ public class InteractDeatailPager extends MenuDetailBasePager {
 
             //按钮显示-GridView
             ib_swich_list_grid.setImageResource(R.drawable.icon_pic_grid_type);
+        }
+    }
+
+    public class MYStringCallback extends StringCallback {
+
+        @Override
+        public void onBefore(okhttp3.Request request, int id) {
+            super.onBefore(request, id);
+        }
+
+        @Override
+        public void onAfter(int id) {
+            super.onAfter(id);
+        }
+
+        @Override
+        public void onError(Call call, Exception e, int id) {
+            LogUtil.e("okhttpUtils互动请求数据失败==" + e.getMessage());
+        }
+
+        @Override
+        public void onResponse(String s, int id) {
+            LogUtil.e("okhttpUtils互动请求数据成功==" + s);
+            //解析json数据
+            CacheUtils.putString(context, photosUrl, s);
+            processData(s);
+            switch (id) {
+                case 100:
+                    Toast.makeText(context, "http", Toast.LENGTH_SHORT).show();
+                    break;
+                case 101:
+                    Toast.makeText(context, "https", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+
+        @Override
+        public void inProgress(float progress, long total, int id) {
+            super.inProgress(progress, total, id);
         }
     }
 }

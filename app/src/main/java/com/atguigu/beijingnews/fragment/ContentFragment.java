@@ -27,7 +27,7 @@ import java.util.ArrayList;
 /**
  * Created by xinpengfei on 2016/10/16.
  * 微信:18091383534
- * Function :主页面
+ * Function :主页面的Fragment
  */
 
 public class ContentFragment extends BaseFragment {

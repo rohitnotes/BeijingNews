@@ -7,8 +7,7 @@ import android.view.View;
  * Created by xinpengfei on 2016/10/17.
  * 微信:18091383534
  * Function :各个详情页面的公共类
- * 标题栏和内容部分，
- * 新闻，专题，组团，互动，投票详情页面等都继承MenuDetailBasePager
+ * 标题栏和内容部分:新闻，专题，组图，互动，投票详情页面等都继承MenuDetailBasePager
  */
 
 public abstract class MenuDetailBasePager {

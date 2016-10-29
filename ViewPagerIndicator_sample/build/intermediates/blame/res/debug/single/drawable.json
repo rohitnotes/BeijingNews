@@ -28,12 +28,12 @@
         "source": "F:\\AndroidStudioProjects\\BeijingNews\\ViewPagerIndicator_sample\\src\\main\\res\\drawable\\perm_group_device_alarms.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\BeijingNews\\ViewPagerIndicator_sample\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
-        "source": "F:\\AndroidStudioProjects\\BeijingNews\\ViewPagerIndicator_sample\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_ic_clear_material.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\BeijingNews\\ViewPagerIndicator_sample\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
         "source": "F:\\AndroidStudioProjects\\BeijingNews\\ViewPagerIndicator_sample\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\BeijingNews\\ViewPagerIndicator_sample\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
+        "source": "F:\\AndroidStudioProjects\\BeijingNews\\ViewPagerIndicator_sample\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_ic_clear_material.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\BeijingNews\\ViewPagerIndicator_sample\\build\\intermediates\\res\\merged\\debug\\drawable\\vpi__tab_indicator.xml",

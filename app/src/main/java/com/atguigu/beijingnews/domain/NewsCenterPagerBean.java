@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by xinpengfei on 2016/10/17.
  * 微信:18091383534
- * Function :
+ * Function :新闻详情类(使用gsonFormat生成)
  */
 
 public class NewsCenterPagerBean {

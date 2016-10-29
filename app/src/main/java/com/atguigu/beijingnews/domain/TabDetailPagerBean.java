@@ -5,11 +5,9 @@ import java.util.List;
 /**
  * Created by xinpengfei on 2016/10/18.
  * 微信:18091383534
- * Function :页签页面的Bean
+ * Function :顶部页签页面的Bean类
  */
-
 public class TabDetailPagerBean {
-
 
     /**
      * countcommenturl : /client/content/countComment/

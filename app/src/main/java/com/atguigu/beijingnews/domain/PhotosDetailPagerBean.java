@@ -5,11 +5,10 @@ import java.util.List;
 /**
  * Created by xinpengfei on 2016/10/21.
  * 微信:18091383534
- * Function :
+ * Function :组图详情类
  */
 
 public class PhotosDetailPagerBean {
-
 
     /**
      * retcode : 200

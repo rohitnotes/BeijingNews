@@ -1,15 +1,22 @@
 package com.atguigu.beijingnews.pager.detail_pager;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -19,6 +26,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.atguigu.beijingnews.R;
+import com.atguigu.beijingnews.activity.ActivityTransitionToActivity;
 import com.atguigu.beijingnews.base.MenuDetailBasePager;
 import com.atguigu.beijingnews.domain.NewsCenterPagerBean2;
 import com.atguigu.beijingnews.domain.PhotosDetailPagerBean;
@@ -69,7 +77,40 @@ public class PhotosDeatailPager extends MenuDetailBasePager {
         View view = View.inflate(context, R.layout.photos_detail_pager, null);
         x.view().inject(this, view);
 
+        /**
+         * Gridview的点击事件
+         */
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String imageUrl = Constants.BASE_URL + news.get(position).getListimage();
+                transition(view, imageUrl);
+            }
+        });
+
+        /**
+         * ListView的点击事件
+         */
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String imageUrl = Constants.BASE_URL + news.get(position).getListimage();
+                transition(view, imageUrl);
+            }
+        });
+
         return view;
+    }
+
+    private void transition(View view, String imageUrl) {
+        if (Build.VERSION.SDK_INT < 21) {
+            Toast.makeText(context, "21+ only, keep out", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(context, ActivityTransitionToActivity.class);
+            intent.setData(Uri.parse(imageUrl));
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, view, "test");
+            context.startActivity(intent, options.toBundle());
+        }
     }
 
     @Override

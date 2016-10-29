@@ -44,12 +44,12 @@
         "source": "F:\\AndroidStudioProjects\\BeijingNews\\PullToRefresh_sample\\build\\intermediates\\exploded-aar\\BeijingNews\\PullToRefresh_library\\unspecified\\res\\layout\\pull_to_refresh_header_horizontal.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\BeijingNews\\PullToRefresh_sample\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ptr_list_fragment.xml",
-        "source": "F:\\AndroidStudioProjects\\BeijingNews\\PullToRefresh_sample\\src\\main\\res\\layout\\activity_ptr_list_fragment.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\BeijingNews\\PullToRefresh_sample\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ptr_webview.xml",
         "source": "F:\\AndroidStudioProjects\\BeijingNews\\PullToRefresh_sample\\src\\main\\res\\layout\\activity_ptr_webview.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\BeijingNews\\PullToRefresh_sample\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ptr_list_fragment.xml",
+        "source": "F:\\AndroidStudioProjects\\BeijingNews\\PullToRefresh_sample\\src\\main\\res\\layout\\activity_ptr_list_fragment.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\BeijingNews\\PullToRefresh_sample\\build\\intermediates\\res\\merged\\debug\\layout\\layout_listview_in_viewpager.xml",

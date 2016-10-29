@@ -2,6 +2,7 @@ package com.atguigu.beijingnews.base;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -13,13 +14,13 @@ import com.atguigu.beijingnews.R;
  * Created by xinpengfei on 2016/10/17.
  * 微信:18091383534
  * Function :各个页面的公共类
- * 标题栏和内容部分，
- * 主页，新闻，商城，购物车，设置页面都继承BasePager
+ * 标题栏和内容部分:主页，新闻，商城，购物车，设置页面都继承BasePager
  */
 
 public class BasePager {
 
     public Context context;
+    public Button btn_cart;
 
     public ImageButton ib_menu;
     public TextView tv_title;
@@ -46,6 +47,7 @@ public class BasePager {
         tv_title = (TextView) view.findViewById(R.id.tv_title);
         fl_base_content = (FrameLayout) view.findViewById(R.id.fl_base_content);
         ib_swich_list_grid = (ImageButton) view.findViewById(R.id.ib_swich_list_grid);
+        btn_cart = (Button) view.findViewById(R.id.btn_cart);
 
         ib_menu.setOnClickListener(new View.OnClickListener() {
             @Override
