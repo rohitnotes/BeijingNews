@@ -351,16 +351,16 @@
         AppId="107704292745179"
         Enable="true" />
     
-     <Alipay
-        Id="50"
-        SortId="50"  
-        AppId="2015072400185895"
-        Enable="true"/>
-     
-     <AlipayMoments
-        Id="51"
-        SortId="51"  
-        AppId="2015072400185895"
-        Enable="true"/>
+     <!--<Alipay-->
+        <!--Id="50"-->
+        <!--SortId="50"  -->
+        <!--AppId="2015072400185895"-->
+        <!--Enable="true"/>-->
+     <!---->
+     <!--<AlipayMoments-->
+        <!--Id="51"-->
+        <!--SortId="51"  -->
+        <!--AppId="2015072400185895"-->
+        <!--Enable="true"/>-->
 
 </DevInfor>

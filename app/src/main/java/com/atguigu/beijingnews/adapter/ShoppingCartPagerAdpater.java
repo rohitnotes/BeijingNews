@@ -20,27 +20,51 @@ import java.util.List;
 /**
  * Created by xpf on 2016/10/26 :)
  * Wechat:18091383534
- * Function:购物车数据的适配器
+ * Function:购物车页面的适配器
  */
 
 public class ShoppingCartPagerAdpater extends RecyclerView.Adapter<ShoppingCartPagerAdpater.ViewHolder> {
 
     private final Context context;
     private List<ShoppingCart> datas;
+
+    /**
+     * 是否点击全选按钮
+     */
     private CheckBox checkbox_all;
+
+    /**
+     * 商品总价格
+     */
     private TextView tv_total_price;
+
+    /**
+     * 商品总数量
+     */
+    private TextView tv_delete_total_count;
+
+    /**
+     * 删除商品的总数量
+     */
+    private TextView tv_total_count;
+
     private CartProvider cartProvider;
 
-    public ShoppingCartPagerAdpater(Context context, final List<ShoppingCart> datas, final CheckBox checkbox_all, TextView tv_total_price) {
+    public ShoppingCartPagerAdpater(Context context, final List<ShoppingCart> datas, final CheckBox checkbox_all, TextView tv_total_price, TextView tv_total_count, TextView tv_delete_total_count) {
         this.context = context;
         this.datas = datas;
         this.checkbox_all = checkbox_all;
         this.tv_total_price = tv_total_price;
+        this.tv_total_count = tv_total_count;
+        this.tv_delete_total_count = tv_delete_total_count;
         cartProvider = new CartProvider(context);
 
+        // 显示总价格
         showTotalPrice();
+        // 显示总数量
+        showTotalCount();
 
-        //设置item的点击事件
+        // 设置item的点击事件
         setItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -58,6 +82,12 @@ public class ShoppingCartPagerAdpater extends RecyclerView.Adapter<ShoppingCartP
                 //3.计算总价格
                 showTotalPrice();
 
+                //4.显示总数量
+                showTotalCount();
+
+                //5.显示删除商品总数量
+                showDeleteTotalCount();
+
             }
         });
 
@@ -73,6 +103,12 @@ public class ShoppingCartPagerAdpater extends RecyclerView.Adapter<ShoppingCartP
 
                 //2.显示总价格
                 showTotalPrice();
+
+                //4.显示总数量
+                showTotalCount();
+
+                //5.显示删除商品总数量
+                showDeleteTotalCount();
             }
         });
 
@@ -113,7 +149,42 @@ public class ShoppingCartPagerAdpater extends RecyclerView.Adapter<ShoppingCartP
      * 显示总价格
      */
     public void showTotalPrice() {
-        tv_total_price.setText("合计￥" + getTotalPrice());
+        tv_total_price.setText("合计:￥" + getTotalPrice());
+    }
+
+    /**
+     * 显示商品总数
+     */
+    public void showTotalCount() {
+        tv_total_count.setText("去结算(" + getTotalCount() + ")");
+    }
+
+    /**
+     * 显示删除商品总数
+     */
+    public void showDeleteTotalCount() {
+        tv_delete_total_count.setText("删除(" + getTotalCount() + ")");
+    }
+
+    /**
+     * 得到商品的总数量
+     *
+     * @return
+     */
+    private int getTotalCount() {
+
+        int count = 0;
+        if (datas != null && datas.size() > 0) {
+            for (int i = 0; i < datas.size(); i++) {
+                ShoppingCart cart = datas.get(i);//购物车类：是否被选中和多少个
+                //是否被勾选
+                if (cart.isCheck()) {
+                    //得到数量，并且和之前的相加
+                    count += cart.getCount();
+                }
+            }
+        }
+        return count;
     }
 
     /**
@@ -175,6 +246,12 @@ public class ShoppingCartPagerAdpater extends RecyclerView.Adapter<ShoppingCartP
 
                 //3.显示总价格
                 showTotalPrice();
+
+                //4.显示总数量
+                showTotalCount();
+
+                //5.显示删除商品总数量
+                showDeleteTotalCount();
             }
 
             @Override
@@ -187,6 +264,12 @@ public class ShoppingCartPagerAdpater extends RecyclerView.Adapter<ShoppingCartP
 
                 //3.显示总价格
                 showTotalPrice();
+
+                //4.显示总数量
+                showTotalCount();
+
+                //5.显示删除商品总数量
+                showDeleteTotalCount();
             }
         });
     }

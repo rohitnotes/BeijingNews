@@ -38,9 +38,10 @@ public class ContentFragment extends BaseFragment {
     @ViewInject(R.id.rg_main)
     private RadioGroup rg_main;
 
-    @ViewInject(R.id.viewpager)
+//    @ViewInject(R.id.viewpager)
 //    private ViewPager viewPager;
 
+    @ViewInject(R.id.viewpager)
     private NoScrollViewPager viewPager;
 
     /**
@@ -81,7 +82,8 @@ public class ContentFragment extends BaseFragment {
         rg_main.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
 
         //设置监听页面被选中
-        viewPager.addOnPageChangeListener(new MyOnPageChangeListener());
+//        viewPager.addOnPageChangeListener(new MyOnPageChangeListener());
+        viewPager.setOnPageChangeListener(new MyOnPageChangeListener());
         basePagers.get(0).initData();
 
         //默认不可以滑动
@@ -90,9 +92,10 @@ public class ContentFragment extends BaseFragment {
 
     /**
      * 得到新闻中心
+     *
      * @return
      */
-    public NewsCenterPager getNewsCenterPager(){
+    public NewsCenterPager getNewsCenterPager() {
         return (NewsCenterPager) basePagers.get(1);
     }
 

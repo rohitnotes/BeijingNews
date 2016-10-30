@@ -115,7 +115,7 @@ public class ShoppingPagerAdpater extends RecyclerView.Adapter<ShoppingPagerAdpa
             btn_buy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "购买", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "已成功放入您的购物车0.0", Toast.LENGTH_SHORT).show();
                     ShoppingPagerBean.Wares wares = datas.get(getLayoutPosition());
                     ShoppingCart cart = cartProvider.convertion(wares);
                     cartProvider.addData(cart);

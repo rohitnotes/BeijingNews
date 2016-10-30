@@ -299,7 +299,7 @@ public class ShoppingPager extends BasePager {
 
             switch (id) {
                 case 100:
-                    Toast.makeText(context, "http", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "页面已成功更新", Toast.LENGTH_SHORT).show();
                     break;
                 case 101:
                     Toast.makeText(context, "https", Toast.LENGTH_SHORT).show();

@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +49,8 @@ public class ShoppingCartPager extends BasePager {
     private TextView tv_total_price;
     private Button btn_order;
     private Button btn_delete;
-    private TextView tv_nodata;
+    private LinearLayout tv_nodata;
+    private Button btn_tobuy;
 
     private ShoppingCartPagerAdpater adpater;
 
@@ -115,7 +117,6 @@ public class ShoppingCartPager extends BasePager {
                         } else {
                             // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
                             Toast.makeText(context, "支付失败", Toast.LENGTH_SHORT).show();
-
                         }
                     }
                     break;
@@ -124,8 +125,6 @@ public class ShoppingCartPager extends BasePager {
                     break;
             }
         }
-
-        ;
     };
 
 
@@ -150,7 +149,8 @@ public class ShoppingCartPager extends BasePager {
         tv_total_price = (TextView) view.findViewById(R.id.tv_total_price);
         btn_order = (Button) view.findViewById(R.id.btn_order);
         btn_delete = (Button) view.findViewById(R.id.btn_delete);
-        tv_nodata = (TextView) view.findViewById(R.id.tv_nodata);
+        tv_nodata = (LinearLayout) view.findViewById(R.id.tv_nodata);
+        btn_tobuy = (Button) view.findViewById(R.id.btn_tobuy);
 
         // 子页面的视图和FrameLayout结合在一起，形成一个新的页面
         fl_base_content.removeAllViews();
@@ -182,11 +182,19 @@ public class ShoppingCartPager extends BasePager {
                 adpater.checkAll_none();
                 //3.显示总价格
                 adpater.showTotalPrice();
+                //4.显示总数量
+                adpater.showDeleteTotalCount();
                 if (adpater != null && adpater.getItemCount() > 0) {
                     tv_nodata.setVisibility(View.GONE);
                 } else {
                     //没有数据
                     tv_nodata.setVisibility(View.VISIBLE);
+                    btn_tobuy.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(context, "去购物", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });
@@ -199,7 +207,6 @@ public class ShoppingCartPager extends BasePager {
         });
 
         showData();
-
     }
 
     /**
@@ -354,6 +361,8 @@ public class ShoppingCartPager extends BasePager {
         adpater.checkAll_none(true);
         adpater.checkAll_none();
         adpater.showTotalPrice();
+        adpater.showTotalCount();
+
     }
 
     private void showDeleteButton() {
@@ -369,6 +378,7 @@ public class ShoppingCartPager extends BasePager {
         adpater.checkAll_none(false);
         adpater.checkAll_none();
         adpater.showTotalPrice();
+        adpater.showDeleteTotalCount();
     }
 
     private void showData() {
@@ -378,7 +388,7 @@ public class ShoppingCartPager extends BasePager {
 
         if (shoppingCarts != null && shoppingCarts.size() > 0) {
 
-            adpater = new ShoppingCartPagerAdpater(context, shoppingCarts, checkbox_all, tv_total_price);
+            adpater = new ShoppingCartPagerAdpater(context, shoppingCarts, checkbox_all, tv_total_price, btn_order, btn_delete);
             //设置适配器
             recyclerview.setAdapter(adpater);
             recyclerview.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
