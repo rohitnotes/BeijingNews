@@ -1,0 +1,163 @@
+[
+    {
+        "outputFile": "F:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "F:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 89,
+                        "endColumn": 57,
+                        "endOffset": 142
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 113,
+                    "endColumn": 55,
+                    "endOffset": 164
+                },
+                "from": {
+                    "file": "F:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 147,
+                        "endColumn": 55,
+                        "endOffset": 198
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 169,
+                    "endColumn": 52,
+                    "endOffset": 217
+                },
+                "from": {
+                    "file": "F:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 184,
+                        "endColumn": 52,
+                        "endOffset": 232
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 222,
+                    "endColumn": 65,
+                    "endOffset": 283
+                },
+                "from": {
+                    "file": "F:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 118,
+                        "endColumn": 65,
+                        "endOffset": 179
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 288,
+                    "endColumn": 61,
+                    "endOffset": 345
+                },
+                "from": {
+                    "file": "F:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 61,
+                        "endOffset": 113
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 350,
+                    "endColumn": 52,
+                    "endOffset": 398
+                },
+                "from": {
+                    "file": "F:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 237,
+                        "endColumn": 52,
+                        "endOffset": 285
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 403,
+                    "endLine": 14,
+                    "endColumn": 12,
+                    "endOffset": 689
+                },
+                "from": {
+                    "file": "F:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 186,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 472
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 694,
+                    "endLine": 17,
+                    "endColumn": 12,
+                    "endOffset": 849
+                },
+                "from": {
+                    "file": "F:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 510,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 665
+                    }
+                }
+            }
+        ]
+    }
+]

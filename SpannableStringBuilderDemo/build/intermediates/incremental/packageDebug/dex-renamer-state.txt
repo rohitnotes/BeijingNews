@@ -1,0 +1,7 @@
+#Mon Oct 31 14:47:47 CST 2016
+base.0=F\:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_a3e6828da638b4e422af11c827a32538a8838447
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=F\:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_ada922bd96b6acabf84c96a76fab265ae862a3e0\\classes.dex
+base.1=F\:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_ada922bd96b6acabf84c96a76fab265ae862a3e0
+file.0=F\:\\AndroidStudioProjects\\BeijingNews\\SpannableStringBuilderDemo\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_a3e6828da638b4e422af11c827a32538a8838447\\classes.dex
