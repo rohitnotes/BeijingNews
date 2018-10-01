@@ -1,16 +1,4 @@
-//buildscript {
-//    repositories {
-//        mavenCentral()
-//    }
-//    dependencies {
-//        classpath 'com.android.tools.build:gradle:0.4.+'
-//    }
-//}
-apply plugin: 'android-library'
-
-dependencies {
-    compile 'com.android.support:support-v4:13.0.0'
-}
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 24
@@ -29,9 +17,11 @@ android {
             renderscript.srcDirs = ['src']
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
-
             manifest.srcFile 'AndroidManifest.xml'
         }
     }
+}
 
+dependencies {
+    compile 'com.android.support:support-v4:24.2.0'
 }

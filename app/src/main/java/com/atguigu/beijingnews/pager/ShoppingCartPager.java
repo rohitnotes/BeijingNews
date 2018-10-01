@@ -18,10 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.atguigu.beijingnews.MainActivity;
 import com.atguigu.beijingnews.R;
 import com.atguigu.beijingnews.adapter.ShoppingCartPagerAdpater;
 import com.atguigu.beijingnews.base.BasePager;
 import com.atguigu.beijingnews.domain.ShoppingCart;
+import com.atguigu.beijingnews.fragment.ContentFragment;
 import com.atguigu.beijingnews.pay.PayResult;
 import com.atguigu.beijingnews.pay.SignUtils;
 import com.atguigu.beijingnews.utils.CartProvider;
@@ -64,7 +66,6 @@ public class ShoppingCartPager extends BasePager {
      */
     private static final String ACTION_COMPLETE = "2";
 
-
     // 商户PID
     public static final String PARTNER = "2088911876712776";
     // 商户收款账号
@@ -87,6 +88,7 @@ public class ShoppingCartPager extends BasePager {
     // 支付宝公钥
     public static final String RSA_PUBLIC = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqI+SkJfIVEs3+SknsXwHl+lz9c7kaWZOiY//y49rJvTzLOkG8H6a0RBFN0nzPe+4PGJ2VytJNW9wk1AU7ydGqj2iZaDBT1G1sKwTW370d91toRF3GRVj6J3Rw8I5kOkrPTfO1NfA/TKLahGhqL9isKlYlt2DHeDcNVLOpAOMqlQIDAQAB";
     private static final int SDK_PAY_FLAG = 1;
+
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @SuppressWarnings("unused")
@@ -173,6 +175,7 @@ public class ShoppingCartPager extends BasePager {
             }
         });
 
+        // 删除按钮的点击事件
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,16 +192,20 @@ public class ShoppingCartPager extends BasePager {
                 } else {
                     //没有数据
                     tv_nodata.setVisibility(View.VISIBLE);
-                    btn_tobuy.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(context, "去购物", Toast.LENGTH_SHORT).show();
-                        }
-                    });
                 }
             }
         });
 
+        // 跳转到去购物页面的点击事件
+        btn_tobuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "主人,我爱死你了~", Toast.LENGTH_SHORT).show();
+                switchPager();
+            }
+        });
+
+        // 去结算按钮的点击事件
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,6 +217,17 @@ public class ShoppingCartPager extends BasePager {
     }
 
     /**
+     * 切换到购物页面
+     */
+    private void switchPager() {
+        MainActivity mainActivity = (MainActivity) context;
+        // 获得contentFragment对象
+        ContentFragment contentFragment = mainActivity.getContentFragment();
+        //调用跳转到购物页面
+        contentFragment.toShoppingPager();
+    }
+
+    /**
      * call alipay sdk pay. 调用SDK支付
      */
     public void pay(View v) {
@@ -217,7 +235,6 @@ public class ShoppingCartPager extends BasePager {
             new AlertDialog.Builder(context).setTitle("警告").setMessage("需要配置PARTNER | RSA_PRIVATE| SELLER")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialoginterface, int i) {
-
                         }
                     }).show();
             return;
@@ -349,20 +366,23 @@ public class ShoppingCartPager extends BasePager {
 
     private void hideDeleteButton() {
 
-        //1.状态和文本设置-->编辑
+        // 1.状态和文本设置-->编辑
         btn_cart.setTag(ACTION_EDIT);
         btn_cart.setText("编辑");
 
-        //2.删除按钮隐藏，结算按钮显示
+        // 2.删除按钮隐藏，结算按钮显示
         btn_delete.setVisibility(View.GONE);
         btn_order.setVisibility(View.VISIBLE);
 
         //3.把所有的商品设置勾选
         adpater.checkAll_none(true);
         adpater.checkAll_none();
-        adpater.showTotalPrice();
-        adpater.showTotalCount();
 
+        // 显示商品的总价格
+        adpater.showTotalPrice();
+
+        // 显示商品的总数量
+        adpater.showTotalCount();
     }
 
     private void showDeleteButton() {
@@ -381,9 +401,12 @@ public class ShoppingCartPager extends BasePager {
         adpater.showDeleteTotalCount();
     }
 
+    /**
+     * 显示购物车里面的数据
+     */
     private void showData() {
 
-        //得到所有的数据
+        // 得到所有的数据-->从本地化存储中取出所有数据
         List<ShoppingCart> shoppingCarts = cartProvider.getAllData();
 
         if (shoppingCarts != null && shoppingCarts.size() > 0) {

@@ -12,12 +12,12 @@
         "source": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefresh_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefresh_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ic_clear_material.xml",
-        "source": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefresh_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_ic_clear_material.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefresh_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_item_background_holo_light.xml",
         "source": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefresh_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefresh_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ic_clear_material.xml",
+        "source": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefresh_library\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_ic_clear_material.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefresh_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_spinner_textfield_background_material.xml",

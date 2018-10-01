@@ -16,16 +16,16 @@
         "source": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_seekbar_track_material.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\drawable\\a5.jpg",
-        "source": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\src\\main\\res\\drawable\\a5.jpg"
+        "merged": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
+        "source": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_ic_clear_material.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
         "source": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
-        "source": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.0\\res\\drawable\\abc_ic_clear_material.xml"
+        "merged": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\drawable\\a5.jpg",
+        "source": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\src\\main\\res\\drawable\\a5.jpg"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\BeijingNews\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",

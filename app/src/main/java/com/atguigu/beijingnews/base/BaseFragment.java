@@ -22,6 +22,8 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 获取上下文,要放在第一句
         context = getActivity();//MainActivity
     }
 
@@ -31,7 +33,7 @@ public abstract class BaseFragment extends Fragment {
         return initView();
     }
 
-    //交给子类实现，让子类实现自己特有的效果
+    // 交给子类实现，让子类实现自己特有的效果
     public abstract View initView();
 
     @Override
@@ -42,8 +44,7 @@ public abstract class BaseFragment extends Fragment {
 
     /**
      * 当子类需要绑定数据到ui的时候，重写该方法
-     * 1.绑定数据
-     * 2.联网请求
+     * 1.绑定数据  2.联网请求
      */
     public void initData() {
 

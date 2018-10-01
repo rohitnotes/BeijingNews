@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 /**
  * Created by xinpengfei on 2016/10/17.
  * 微信:18091383534
- * Function :屏幕ViewPager的滑动事件
+ * Function :屏蔽ViewPager的滑动事件
  */
 
 public class NoScrollViewPager extends ViewPager {

@@ -21,32 +21,30 @@ public class BasePager {
 
     public Context context;
     public Button btn_cart;
-
-    public ImageButton ib_menu;
     public TextView tv_title;
+    public ImageButton ib_menu;
     public FrameLayout fl_base_content;
-    public ImageButton ib_swich_list_grid;
+    public ImageButton ib_switch_list_grid;
+
     /**
      * 代表每个页面的视图
      */
     public View rootView;
 
     public BasePager(Context context) {
-        this.context = context;//接收上下文要放在第一行代码里
+        this.context = context; // 接收上下文要放在第一行代码里
         rootView = initView();
     }
 
     /**
      * 初始化公共视图
-     *
-     * @return
      */
     private View initView() {
         View view = View.inflate(context, R.layout.basepager, null);
         ib_menu = (ImageButton) view.findViewById(R.id.ib_menu);
         tv_title = (TextView) view.findViewById(R.id.tv_title);
         fl_base_content = (FrameLayout) view.findViewById(R.id.fl_base_content);
-        ib_swich_list_grid = (ImageButton) view.findViewById(R.id.ib_swich_list_grid);
+        ib_switch_list_grid = (ImageButton) view.findViewById(R.id.ib_swich_list_grid);
         btn_cart = (Button) view.findViewById(R.id.btn_cart);
 
         ib_menu.setOnClickListener(new View.OnClickListener() {
@@ -54,10 +52,9 @@ public class BasePager {
             public void onClick(View v) {
                 //2.左侧菜单收起
                 MainActivity mainActivity = (MainActivity) context;
-                mainActivity.getSlidingMenu().toggle();//开<-->关
+                mainActivity.getSlidingMenu().toggle(); // 开<-->关
             }
         });
-
         return view;
     }
 

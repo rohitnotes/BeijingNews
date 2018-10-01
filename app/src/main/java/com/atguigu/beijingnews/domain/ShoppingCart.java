@@ -14,7 +14,8 @@ public class ShoppingCart extends ShoppingPagerBean.Wares {
     private int count = 1;
 
     /**
-     * 商品是否被选中
+     * 商品是否被选中,由商品本身决定,不能由checkBox决定,否则会出现ListView的复用
+     * 当点击ListView中的某一条时,让checkBox取反,此时要屏蔽checkBox的点击
      */
     private boolean isCheck = true;
 

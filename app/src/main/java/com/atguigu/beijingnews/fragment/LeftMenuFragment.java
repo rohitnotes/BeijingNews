@@ -2,14 +2,11 @@ package com.atguigu.beijingnews.fragment;
 
 import android.graphics.Color;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.atguigu.beijingnews.MainActivity;
-import com.atguigu.beijingnews.R;
+import com.atguigu.beijingnews.adapter.LeftMenuFragmentAdapter;
 import com.atguigu.beijingnews.base.BaseFragment;
 import com.atguigu.beijingnews.domain.NewsCenterPagerBean2;
 import com.atguigu.beijingnews.pager.NewsCenterPager;
@@ -32,12 +29,12 @@ public class LeftMenuFragment extends BaseFragment {
     private ListView listView;
 
     /**
-     * 用于装左侧菜单里详情的适配器
+     * 左侧菜单详情的适配器
      */
     private LeftMenuFragmentAdapter adapter;
 
     /**
-     * 被点击过的位置
+     * 用于记录被点击过的位置
      */
     private int selectPosition;
 
@@ -51,12 +48,14 @@ public class LeftMenuFragment extends BaseFragment {
     public View initView() {
         LogUtil.e("左侧菜单的视图被初始化了...");
 
+        // 动态加载一个listView
         listView = new ListView(context);
         listView.setPadding(0, DensityUtil.dip2px(context, 40), 0, 0);
+        // 取消ListView的分割线
         listView.setDividerHeight(0);
-        //按下某个设置为没有效果
+        // 设置按下某个item没有效果
         listView.setSelector(android.R.color.transparent);
-        //屏蔽ListView在低版本的手机上，点击某个会变灰
+        // 屏蔽ListView在低版本的手机上，点击某个会变灰
         listView.setCacheColorHint(Color.TRANSPARENT);
 
         //设置点击某一条
@@ -64,17 +63,16 @@ public class LeftMenuFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                //1.点击的时候，设置被点击的高亮
+                // 1.点击的时候，设置被点击的高亮
                 selectPosition = position;
-                adapter.notifyDataSetChanged();//getCount()-->getView();
+                adapter.notifyDataSetChanged(); // 刷新适配器:即执行方法getCount()-->getView();
 
-                //2.左侧菜单的收起
+                // 2.左侧菜单的收起
                 MainActivity mainActivity = (MainActivity) context;
-                mainActivity.getSlidingMenu().toggle();//开<--->关
+                mainActivity.getSlidingMenu().toggle(); // 开<--->关
 
-                //3.点击的时候
+                // 3.点击的时候
                 switchPager(selectPosition);
-
             }
         });
         return listView;
@@ -87,11 +85,11 @@ public class LeftMenuFragment extends BaseFragment {
      */
     private void switchPager(int selectPosition) {
         MainActivity mainActivity = (MainActivity) context;
-        //3.切换不同的页面
+        // 3.切换不同的页面
         ContentFragment contentFragment = mainActivity.getContentFragment();
-        //得到新闻中心
+        // 得到新闻中心
         NewsCenterPager newsCenterPager = contentFragment.getNewsCenterPager();
-        //调用新闻中心的方法切换到对应的页面
+        // 调用新闻中心的方法切换到对应的页面
         newsCenterPager.switchPager(selectPosition);
     }
 
@@ -101,49 +99,18 @@ public class LeftMenuFragment extends BaseFragment {
         LogUtil.e("左侧菜单的数据被初始化了...");
     }
 
-    //    public void setData(List<NewsCenterPagerBean.DataBean> leftdata) {
+    /**
+     * 左侧菜单的数据设置
+     */
     public void setData(List<NewsCenterPagerBean2.NewsCenterPagerData> leftdata) {
 
         this.leftdata = leftdata;
-        adapter = new LeftMenuFragmentAdapter();
-        //设置适配器
+        adapter = new LeftMenuFragmentAdapter(context, leftdata);
+        adapter.setSelectPosition(selectPosition);
+        // 设置适配器
         listView.setAdapter(adapter);
 
         switchPager(selectPosition);
     }
 
-
-    class LeftMenuFragmentAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return leftdata.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            TextView textView = (TextView) View.inflate(context, R.layout.item_leftmenufragment, null);
-            textView.setText(leftdata.get(position).getTitle());
-
-            if (position == selectPosition) {
-                textView.setEnabled(false);
-            } else {
-                textView.setEnabled(false);
-            }
-            textView.setEnabled(position == selectPosition);
-
-            return textView;
-        }
-    }
 }

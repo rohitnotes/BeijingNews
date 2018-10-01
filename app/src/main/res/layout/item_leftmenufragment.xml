@@ -9,5 +9,4 @@
     android:text="新闻"
     android:textColor="@drawable/item_leftmenu_textcolor_selector"
     android:textSize="23sp">
-
 </TextView>

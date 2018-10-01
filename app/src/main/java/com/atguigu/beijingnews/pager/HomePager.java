@@ -24,7 +24,7 @@ public class HomePager extends BasePager {
     public void initData() {
         super.initData();
         LogUtil.e("主页面数据加载了....");
-        //设置标题
+        // 设置标题
         tv_title.setText("主页");
 
         //创建子页面的视图
@@ -34,9 +34,9 @@ public class HomePager extends BasePager {
         textView.setTextColor(Color.RED);
         textView.setText("主页面");
 
-        //子页面的视图和FrameLayout结合在一起，形成一个新的页面
+        // 子页面的视图和FrameLayout结合在一起，形成一个新的页面
         fl_base_content.addView(textView);
 
-        //联网请求
+        // 联网请求
     }
 }

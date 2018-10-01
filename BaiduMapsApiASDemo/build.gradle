@@ -13,12 +13,12 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
 
-    signingConfigs {
-        // your debug keystore
-        debug{
-            storeFile file("debug.keystore")
-        }
-    }
+//    signingConfigs {
+//        // your debug keystore
+//        debug{
+//            storeFile file("debug.keystore")
+//        }
+//    }
 
     sourceSets {
         main {
@@ -39,9 +39,9 @@ android {
     }
     defaultConfig {
 //        applicationId "baidumapsdk.demo"
-        applicationId "com.atguigu.baidumap_demo"
-        minSdkVersion 9
-        targetSdkVersion 22
+        applicationId "com.atguigu.baidumap"
+        minSdkVersion 16
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }

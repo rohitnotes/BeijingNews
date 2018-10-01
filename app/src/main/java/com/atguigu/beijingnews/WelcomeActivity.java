@@ -13,6 +13,9 @@ import android.widget.RelativeLayout;
 import com.atguigu.beijingnews.activity.GuideActivity;
 import com.atguigu.beijingnews.utils.CacheUtils;
 
+/**
+ * 欢迎页面的Activity(动画效果)
+ */
 public class WelcomeActivity extends Activity {
 
     private RelativeLayout rl_welcome;
@@ -77,16 +80,16 @@ public class WelcomeActivity extends Activity {
         @Override
         public void onAnimationEnd(Animation animation) {
 
-            //当动画播放完成进入--主页面或者引导页面
+            //当动画播放完成进入-->主页面或者引导页面
             boolean startMain = CacheUtils.getBoolean(WelcomeActivity.this, GuideActivity.START_MAIN);
-            if (startMain) {
 
+            if (startMain) {
                 startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             } else {
                 startActivity(new Intent(WelcomeActivity.this, GuideActivity.class));
             }
 
-            finish();
+            finish();// 销毁欢迎页面
         }
 
         /**

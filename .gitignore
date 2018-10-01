@@ -9,3 +9,5 @@
 .externalNativeBuild
 .idea
 .svn
+build
+alipay_demo/build/

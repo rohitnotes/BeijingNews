@@ -47,14 +47,13 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
         Uri uri = getIntent().getData();
         LogUtil.e("uri==" + uri);
         webSettings = webview.getSettings();
-        webSettings.setJavaScriptEnabled(true);//设置支持JavaScript
-        //设置
-        webSettings.setBuiltInZoomControls(true);//设置缩放按钮
-        webSettings.setUseWideViewPort(true);//设置支持双击页面变大变小，页面要支持
+        webSettings.setJavaScriptEnabled(true);// 设置支持JavaScript
+        webSettings.setBuiltInZoomControls(true);// 设置缩放按钮
+        webSettings.setUseWideViewPort(true);// 设置支持双击页面变大变小，页面要支持
 
-        //这个监听有一个作用，点击页面的连接不会打开系统的浏览器页面
+        // 这个监听有一个作用，点击页面的连接不会打开系统的浏览器页面
         webview.setWebViewClient(new WebViewClient() {
-            //当页面加载完成的时候回调
+            // 当页面加载完成的时候回调
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
@@ -63,12 +62,11 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
         });
 
         webview.loadUrl(uri.toString());
-//        webview.loadUrl("http://atguigu.com/teacher.shtml");
+        // webview.loadUrl("http://atguigu.com/teacher.shtml");
     }
 
     /**
-     * Find the Views in the layout<br />
-     * <br />
+     * Find the Views in the layout
      * Auto-created on 2016-10-21 13:09:32 by Android Layout Finder
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
@@ -96,47 +94,44 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
     }
 
     /**
-     * Handle button click events<br />
-     * <br />
+     * Handle button click events
      * Auto-created on 2016-10-21 13:09:32 by Android Layout Finder
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     @Override
     public void onClick(View v) {
         if (v == icon_textsize) {
-            // Handle clicks for ibMenu
             Toast.makeText(NewsDetailActivity.this, "设置文字大小", Toast.LENGTH_SHORT).show();
             showChangeTextSizeDialog();
 
         } else if (v == ibBack) {
-            // Handle clicks for ibBack
             finish();
 
         } else if (v == iconShare) {
-            // Handle clicks for iconShare
             showShare();
 //            Toast.makeText(NewsDetailActivity.this, "分享", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void showShare() {
-        ShareSDK.initSDK(this);
+
+        ShareSDK.initSDK(this); // 初始化sharedSDK
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
         oks.disableSSOWhenAuthorize();
 
         // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
-        //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+        // oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
         oks.setTitle("标题");
         // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
         oks.setTitleUrl("http://sharesdk.cn");
         // text是分享文本，所有平台都需要这个字段
         oks.setText("我是分享文本");
-        //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
+        // 分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
         oks.setImageUrl("http://f1.sharesdk.cn/imgs/2014/02/26/owWpLZo_638x960.jpg");
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
-        //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+        // oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
         // url仅在微信（包括好友和朋友圈）中使用
         oks.setUrl("http://sharesdk.cn");
         // comment是我对这条分享的评论，仅在人人网和QQ空间使用
@@ -150,9 +145,13 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
         oks.show(this);
     }
 
+    /**
+     * 显示WebView页面文字大小的Dialog
+     */
     private void showChangeTextSizeDialog() {
 
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        // 1.一般的Dialog设置
+       /* AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("设置文字大小");
         String[] items = {"超大字体", "大字体", "正常字体", "小字体", "超小字体"};
         dialog.setSingleChoiceItems(items, realSize, new DialogInterface.OnClickListener() {
@@ -169,18 +168,37 @@ public class NewsDetailActivity extends Activity implements View.OnClickListener
                 changeTextSize(realSize);
             }
         });
-        dialog.show();
+        dialog.show();*/
+
+        // 2.使用方法链显示一个Dialog
+        new AlertDialog.Builder(this)
+                .setTitle("设置文字大小")
+                .setSingleChoiceItems(new String[]{"超大字体", "大字体", "正常字体", "小字体", "超小字体"}, realSize, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        tempSize = which;
+                    }
+                })
+                .setNegativeButton("取消", null)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        realSize = tempSize;
+                        changeTextSize(realSize);
+                    }
+                })
+                .show();
     }
 
     /**
-     * 0~4
+     * 0~4四个等级字体大小
      *
      * @param realSize
      */
     private void changeTextSize(int realSize) {
         switch (realSize) {
             case 0://超大字体
-//                webSettings.setTextSize(WebSettings.TextSize.LARGEST);
+                // webSettings.setTextSize(WebSettings.TextSize.LARGEST);
                 webSettings.setTextZoom(200);
                 break;
             case 1://大字号

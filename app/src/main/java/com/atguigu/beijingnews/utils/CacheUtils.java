@@ -10,12 +10,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 /**
- * 作者：尚硅谷-杨光福 on 2016/10/8 10:37
- * 微信：yangguangfu520
- * QQ号：541433511
- * 作用：缓存工具类-共享偏好
+ * 缓存工具类-共享偏好
  */
 public class CacheUtils {
+
     /**
      * 缓存文本数据
      *
@@ -34,12 +32,13 @@ public class CacheUtils {
                 File file = new File(Environment.getExternalStorageDirectory() + "/beijingnews/file/localfile/" + fileName);
 
                 File parent = file.getParentFile();//mnt/sdcard/beijingnews/file/localfile/
+
                 if (!parent.exists()) {
-                    parent.mkdirs();//创建多层目录
+                    parent.mkdirs();// 创建多层目录
                 }
 
                 if (!file.exists()) {
-                    file.createNewFile();
+                    file.createNewFile();//文件不存在就创建文件
                 }
 
                 FileOutputStream fos = new FileOutputStream(file);
@@ -65,7 +64,8 @@ public class CacheUtils {
      */
     public static String getString(Context context, String key) {
 
-        String result = "";
+        String result = "";// 默认返回空字符串
+
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
 
             //读取sdcard的文件
@@ -80,6 +80,7 @@ public class CacheUtils {
                     byte[] buffer = new byte[1024];
                     int length;
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
                     while ((length = fis.read(buffer)) != -1) {
                         stream.write(buffer, 0, length);
                     }

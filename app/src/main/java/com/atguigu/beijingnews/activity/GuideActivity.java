@@ -3,10 +3,8 @@ package com.atguigu.beijingnews.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +13,7 @@ import android.widget.RelativeLayout;
 
 import com.atguigu.beijingnews.MainActivity;
 import com.atguigu.beijingnews.R;
+import com.atguigu.beijingnews.adapter.MyPagerAdapter;
 import com.atguigu.beijingnews.utils.CacheUtils;
 import com.atguigu.beijingnews.utils.DensityUtil;
 import com.atguigu.beijingnews.utils.LogUtil;
@@ -38,7 +37,7 @@ public class GuideActivity extends Activity {
     private int widthDpi;
 
     /**
-     * 设置适配器--> 准备数据
+     * 引导页面的集合数据(若干引导页)
      */
     private int ids[] = new int[]{
             R.drawable.guide_1, R.drawable.guide_2, R.drawable.guide_3
@@ -47,14 +46,22 @@ public class GuideActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        initView();
+
+        initData();
+    }
+
+    /**
+     * 实例化控件
+     */
+    private void initView() {
         setContentView(R.layout.activity_guide);
 
         viewpager = (ViewPager) findViewById(R.id.viewpager);
         ll_point_group = (LinearLayout) findViewById(R.id.ll_point_group);
         iv_red_point = (ImageView) findViewById(R.id.iv_red_point);
         btn_start_main = (Button) findViewById(R.id.btn_start_main);
-
-        initData();
     }
 
     /**
@@ -77,6 +84,7 @@ public class GuideActivity extends Activity {
 
             //添加灰色的点
             ImageView point = new ImageView(this);
+            // 给Point设置shape为oval,即圆
             point.setImageResource(R.drawable.point_gray);
 
             //设置点的大小
@@ -92,7 +100,7 @@ public class GuideActivity extends Activity {
         }
 
         //设置适配器
-        viewpager.setAdapter(new MyPagerAdapter());
+        viewpager.setAdapter(new MyPagerAdapter(imageViews));
 
         /**
          * 求间距
@@ -100,10 +108,10 @@ public class GuideActivity extends Activity {
          */
         iv_red_point.getViewTreeObserver().addOnGlobalLayoutListener(new MyOnGlobalLayoutListener());
 
-        //监听viewPager页面滑动的百分比
+        // 监听viewPager页面滑动的百分比
         viewpager.addOnPageChangeListener(new MyOnPageChangeListener());
 
-        //设置点击事件
+        // 设置"立即体验"按钮的点击事件
         btn_start_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +120,7 @@ public class GuideActivity extends Activity {
                 //跳转到主页面
                 startActivity(new Intent(GuideActivity.this, MainActivity.class));
 
-                finish();//关闭引导页面
+                finish();// 销毁引导页面
             }
         });
     }
@@ -128,10 +136,9 @@ public class GuideActivity extends Activity {
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             //红点移动的距离 = ViewPager页面的百分比* 间距
-
 //            float leftMargin = positionOffset * leftMarg;
-            //坐标 = 起始位置 + 红点移动的距离；
 
+            //坐标 = 起始位置 + 红点移动的距离；
             float leftMargin = (position + positionOffset) * leftMarg;
             RelativeLayout.LayoutParams paramgs = (RelativeLayout.LayoutParams) iv_red_point.getLayoutParams();
             //距离左边的距离
@@ -139,7 +146,6 @@ public class GuideActivity extends Activity {
             iv_red_point.setLayoutParams(paramgs);
 
             LogUtil.e("position==" + position + ",positionOffset==" + positionOffset + ",positionOffsetPixels==" + positionOffsetPixels);
-
 
         }
 
@@ -171,41 +177,6 @@ public class GuideActivity extends Activity {
             //间距 = 第一个点距离左边距离 - 第0个点距离左边距离
             leftMarg = ll_point_group.getChildAt(1).getLeft() - ll_point_group.getChildAt(0).getLeft();
 
-        }
-    }
-
-    class MyPagerAdapter extends PagerAdapter {
-
-        @Override
-        public int getCount() {
-            return imageViews.size();
-        }
-
-        /**
-         * @param container viewPager容器
-         * @param position  创建视图对应的位置
-         * @return
-         */
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            ImageView imageView = imageViews.get(position);
-            container.addView(imageView);
-            return imageView;
-        }
-
-        /**
-         * @param view
-         * @param object
-         * @return
-         */
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
         }
     }
 

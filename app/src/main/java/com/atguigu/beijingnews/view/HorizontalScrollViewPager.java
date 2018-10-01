@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 /**
  * Created by xinpengfei on 2016/10/18.
  * 微信:18091383534
- * Function :
+ * Function :水平滑动的viewPager
  */
 
 public class HorizontalScrollViewPager extends ViewPager {
