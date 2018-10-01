@@ -7,7 +7,5 @@
 /build
 /captures
 .externalNativeBuild
-.idea
-.svn
-build
+/.idea
 alipay_demo/build/
